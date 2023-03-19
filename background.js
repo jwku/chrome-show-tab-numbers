@@ -3,6 +3,7 @@ const config = { enabled: true, disabledTabIds: new Set() };
 const COMMANDS = {
   "toggle-all-tabs": toggleAllTabs,
   "toggle-current-tab": toggleCurrentTab,
+  "del-del": del,
 };
 const CONTEXT_MENU = {
   "chrome-show-tab-numbers-toggle-all-tabs": {
@@ -12,6 +13,10 @@ const CONTEXT_MENU = {
   "chrome-show-tab-numbers-toggle-current-tab": {
     title: "Toggle tab numbering for current tab",
     callback: toggleCurrentTab,
+  },
+    "del-del": {
+    title: "del",
+    callback: del,
   },
 };
 
@@ -42,7 +47,7 @@ function requestToUpdateAll() {
   }
 
   clearTimeout(timer);
-  timer = setTimeout(updateAll, 300);
+  timer = setTimeout(updateAll, 300000);
 }
 
 async function updateAll() {
@@ -122,11 +127,15 @@ function updateOne({ isEnabled, number }) {
   cache.enabled = isEnabled;
   cache.number = number;
   cache.numberedTitle = (
-    cache.enabled ? `${number}. ${unnumberedTitle}` : unnumberedTitle
+    cache.enabled ? `${number}${unnumberedTitle}` : unnumberedTitle
   ).trim();
 
   document.title = cache.numberedTitle;
   document.showTabNumbers = cache;
+}
+
+function del() {
+  document.title = cache.numberedTitle
 }
 
 function toggleAllTabs() {
