@@ -135,7 +135,7 @@ function updateOne({ isEnabled, number }) {
 }
 
 function del() {
-  document.title = document.title
+  document.title = document.title.replace(/\d+/g, '');
 }
 
 function toggleAllTabs() {
@@ -144,6 +144,9 @@ function toggleAllTabs() {
 }
 
 async function toggleCurrentTab() {
+  
+  document.title = document.title.replace(/\d+/g, '');
+
   const [currentTab] = await chrome.tabs.query({
     active: true,
     lastFocusedWindow: true,
