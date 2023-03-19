@@ -135,7 +135,7 @@ function updateOne({ isEnabled, number }) {
 }
 
 function del() {
-  document.title = cache.numberedTitle
+  document.title = document.title
 }
 
 function toggleAllTabs() {
