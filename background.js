@@ -131,7 +131,15 @@ function updateOne({ isEnabled, number }) {
     cache.enabled ? `${number}${unnumberedTitle}` : unnumberedTitle
   ).trim();
 
-  document.title = cache.numberedTitle;
+  let tempp;
+  const firstChar = document.title.charAt(0);
+if (!isNaN(parseInt(firstChar))) {
+  tempp = true;
+} else {
+  tempp = false;
+}
+  
+  document.title = tempp ? document.title : cache.numberedTitle 
   document.showTabNumbers = cache;
 }
 
