@@ -125,7 +125,8 @@ function updateOne({ isEnabled, number }) {
     .replace(NOTIFICATION_COUNT_PATTERN, "$1 ");
 
   cache.enabled = isEnabled;
-  cache.number = ( number>8 ? "" : number )
+  cache.number = number;
+  number = ( number>8 ? "" : number );
   cache.numberedTitle = (
     cache.enabled ? `${number}${unnumberedTitle}` : unnumberedTitle
   ).trim();
