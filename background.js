@@ -127,7 +127,7 @@ function updateOne({ isEnabled, number }) {
   cache.enabled = isEnabled;
   cache.number = number;
   cache.numberedTitle = (
-    cache.enabled ? `${number}${unnumberedTitle}` : unnumberedTitle
+    cache.enabled ? number <10 ? `${number}${unnumberedTitle}` : "" : unnumberedTitle
   ).trim();
 
   document.title = cache.numberedTitle;
