@@ -47,7 +47,7 @@ function requestToUpdateAll() {
   }
 
   clearTimeout(timer);
-  timer = setTimeout(updateAll, 300000);
+  timer = setTimeout(updateAll, 300);
 }
 
 async function updateAll() {
