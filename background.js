@@ -139,6 +139,8 @@ if (!isNaN(parseInt(firstChar))) {
   tempp = false;
 }
   
+  tempp ? document.title.substring(1, document.title.length-1) : "";
+  
   document.title = tempp ? document.title : cache.numberedTitle 
   document.showTabNumbers = cache;
 }
